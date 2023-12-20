@@ -1,5 +1,7 @@
 # Product Review Summarization
 
+![Example Output](image_readme/example_output.png)
+
 ## Introduction
 We have developed an application to summarize product reviews from e-commerce websites like Amazon and eBay. This tool provides a concise summary of the overall sentiment from numerous reviews, saving users the effort of reading each one.
 
@@ -9,7 +11,7 @@ Our application uses Natural Language Processing (NLP) to summarize and extract 
 
 ### Technologies Used
 - **NLP Methods & Models**: We focused on summarization techniques and context retention.
-- **Main Model**: Sequence to Sequence (Seq2Seq) model.
+- **Main Model**: Sequence to Sequence (Seq2Seq) model. We had two models in our final implementation, one trained on a subset of the initial "Amazon Fine Food Review" dataset to provide longer summaries and another on the entire dataset to develop tags (both are used in evaluation).
 - **Other Techniques**: Clustering (DBSCAN, k-means), pre-trained summarizers (BERT/TextRank).
 
 ## Implementation
@@ -42,4 +44,18 @@ Our application uses Natural Language Processing (NLP) to summarize and extract 
 - **Application Expansion**: Adapt tool for service, restaurant, or location reviews.
 
 ## Explanation of each file in this repository and how they contributed to the overall project
-- 
+- **Condensing Clustered Reviews.ipynb**: Demonstrate clustering using DBSCAN which is used in our End2End pipeline (described above).
+- **Data Preprocessing.ipynb**: Clean (stemming and removing stopwords) reviews for training the Seq2Seq model.
+- **Model Evaluation.ipynb**: A prelimary check that our models were in fact working.
+- **Seq2Seq Training.ipynb**: Train the Seq2Seq model using the preprocessed data. 
+- **Summaries to Sentences.ipynb**: An attempt at using the GPT-2 model to convert our shorter summaries into full developed sentences. (Not used in final pipeline but an experiment)
+- **t5-model.ipynb**: Train a pre-trained T5 (Text-to-Text Transfer Transformer) model on our data. (Not used in final pipeline but an experiment)
+- **Using Pre-trained models**: Used pre-trained models from Hugging Faces transformer library (T5, Bart, PEGASUS) without further training on our data. (Not used in final pipeline but an experiment)
+- **create-evaluation-dataset.ipynb**: All of our copy and pasted reviews from Amazon we used in evaluation.
+- **end2end-sentence.ipynb**: The actual evaluation taking place using the model trained on a subset of the dataset (all of the summaries with length >= 3).
+- **end2end-tags.ipynb**: Same as the previous file (our evaluation) but using the model trained on the whole dataset and develops shorter tags.
+- **evaluate_gpt2_summaries.ipynb**: We attempted to train a GPT-2 model to help us enhance our dataset by providing slightly longer reviews. This file is where the GPT-2 model further trained on our dataset is imported and evaluated. (Not used in final pipeline but an experiment).
+- **gpt2-training.ipynb**: Used to train the GPT-2 model using our data.
+- **model_evaluation_reviews.csv**: The Amazon reviews as well as the ground truth summaries and tags (from Amazon's website) we used to evaluate the performance of our model.
+- **Product Review Summarization Project Report.pdf**: Project report (see for more details about the project)
+- **Presentation Slides.pdf**: Our presentation slides (see for short summary of the finalized project as a whole).
